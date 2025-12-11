@@ -1,3 +1,6 @@
+-- My custome settings START
+vim.opt.shell = "bash"
+
 vim.keymap.set("n", "<leader>w1", function()
 	vim.cmd("tabnew")
 	vim.cmd("term")
