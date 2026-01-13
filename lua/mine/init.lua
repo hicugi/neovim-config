@@ -36,3 +36,8 @@ vim.keymap.set("n", "<leader>mb", function()
 	vim.fn.setreg("+", branch_name)
 end, { desc = "[b] Copy Git branch name to buffer" })
 
+
+vim.keymap.set("n", "<leader>md", function()
+	local file_dir = vim.fn.expand("%:h")
+	vim.fn.system("mkdir -p " .. file_dir)
+end, { desc = "[d] Create directory for current file" })
