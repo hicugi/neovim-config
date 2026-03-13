@@ -11,13 +11,21 @@ vim.keymap.set("n", "<leader>w1", function()
 	vim.api.nvim_command('startinsert')
 end, { desc = "[t] New tab with 2 terms" })
 
+vim.keymap.set("v", "Y", function()
+	local start_pos = vim.fn.getpos("v")
+	local end_pos = vim.fn.getpos(".")
 
--- Copy relative path
+	local lines = vim.fn.getregion(start_pos, end_pos)
+	local str = table.concat(lines, '\n')
+
+	vim.fn.setreg("+", str)
+	vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<C-c>", true, false, true), 'n', true)
+end, { desc = "[Y] Copy to clipboard" })
+
 vim.keymap.set("n", "<leader>mp", function()
 	local full_file_path = vim.fn.expand("%")
 	vim.fn.setreg("+", full_file_path)
 end, { desc = "[p] Copy current file's path to buffer" })
--- Copy full path
 vim.keymap.set("n", "<leader>mP", function()
 	local full_file_path = vim.fn.expand("%:p")
 	vim.fn.setreg("+", full_file_path)
