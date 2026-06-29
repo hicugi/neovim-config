@@ -1,13 +1,16 @@
 -- My custome settings START
 vim.opt.shell = "bash"
 
+-- require('nvim-treesitter').install { 'javascript' }
+
 vim.keymap.set("n", "<leader>w1", function()
 	vim.cmd("tabnew")
 	vim.cmd("term")
-	vim.cmd("vs")
+	vim.cmd("sp")
+	vim.api.nvim_command('15 wincmd +')
 	vim.cmd("term")
 
-	vim.api.nvim_command('wincmd h')
+	vim.api.nvim_command('wincmd a')
 	vim.api.nvim_command('startinsert')
 end, { desc = "[t] New tab with 2 terms" })
 
